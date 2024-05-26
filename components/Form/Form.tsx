@@ -95,9 +95,12 @@ const ContactForm = () => {
     setPending(false);
     console.log("📗 [ Client message: ]:", res.message);
     console.log("📗 [ Data Submitted ]:", res.data);
+
     if (res.error) {
       console.error("📕 [ Error ]:", res.message);
       setError(res.message);
+    } else {
+      setError("");
     }
   };
 

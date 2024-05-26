@@ -3,6 +3,7 @@
 <!-- TODO: -->
 
 - [] **Next** Send email - Resend
+- [] **Next** Hide entire tab if not logged in
 
 - [ ] Make it a regular route, I need to learn how to actually make the form work with the api, not actions
 - [ ] Change to testimonials
@@ -15,6 +16,7 @@
 
 ## Pending Changes
 
+- [ ] Role based authorization and secure routes
 - [ ] Replace the favicon with a transparent backgroud one
   - [Favicon Generator Website](https://favicon.io/favicon-converter/)
 - [ ] Find a good favicon image process (transparent background)
@@ -22,9 +24,6 @@
   - Look for Shadcn design pack
 - [ ] Document current deployment process - How to configure the domain, next, vercel and env variables
 - [ ] Gradient letters on the title "Delivery" (New trend)
-- [ ] Hide entire tab if not logged in
-
-- [ ] Add authorization and secure routes
 
 &nbsp;  
 &nbsp;  
@@ -39,6 +38,8 @@
 - [x] Add correct data to mongoDB
 - [x] Fix the zod inputs in the banckend form changes
 - [x] Invalid Date message not showing the correct message
+- [x] Reset dropdowns after submit
+  - [Reset dropdowns after submit](https://github.com/shadcn-ui/ui/issues/549)
 
 ### **5/25/24**
 

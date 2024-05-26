@@ -115,7 +115,7 @@ const ContactForm = () => {
 
   // - Markup
   return (
-    <div className="flex flex-col items-center md:mt-10 md:px-4">
+    <div className="flex flex-col items-center sm:w-full md:mt-10 md:px-4">
       <Card className="w-full px-6 pb-10 pt-8 shadow-lg dark:bg-darker md:w-[650px]">
         <CardHeader className="mb-4">
           <CardTitle className="mb-6 text-4xl font-bold text-primary">

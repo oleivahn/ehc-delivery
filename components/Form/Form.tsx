@@ -48,6 +48,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
+import { toast, useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 //
 //
@@ -56,6 +58,7 @@ import { Textarea } from "@/components/ui/textarea";
 const ContactForm = () => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const { toast } = useToast();
   const ref = React.useRef<HTMLFormElement>(null);
 
   const defaultValues = {
@@ -101,13 +104,19 @@ const ContactForm = () => {
       setError(res.message);
     } else {
       setError("");
+      toast({
+        variant: "success",
+        title: "Success",
+        description: "Your message has been sent!",
+        // action: <ToastAction altText="Try again">Success</ToastAction>,
+      });
     }
   };
 
   // - Markup
   return (
-    <div className="mt-10 flex flex-col items-center px-4">
-      <Card className="w-full px-6 py-8 shadow-lg dark:bg-darker md:w-[650px]">
+    <div className="flex flex-col items-center md:mt-10 md:px-4">
+      <Card className="w-full px-6 pb-10 pt-8 shadow-lg dark:bg-darker md:w-[650px]">
         <CardHeader className="mb-4">
           <CardTitle className="mb-6 text-4xl font-bold text-primary">
             Contact Us

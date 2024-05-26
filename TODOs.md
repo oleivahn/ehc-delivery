@@ -40,6 +40,7 @@
 - [x] Invalid Date message not showing the correct message
 - [x] Reset dropdowns after submit
   - [Reset dropdowns after submit](https://github.com/shadcn-ui/ui/issues/549)
+- [x] Add success toast
 
 ### **5/25/24**
 

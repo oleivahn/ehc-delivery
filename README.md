@@ -1,56 +1,77 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ------------------------
+# INITIAL SETUP
 
-Clone project
+**CREATE THE REPO**
+Clone project from/to github
 connect the db
 
-choose the database name
-	and the cluster
-	
-user name
-	oleivahn
-	8IKYtRvnVzsPLuMq
-	
-Get the driver
-	For Node
-	This gives you the connection string... paste that on the .env file
-	
-This should give you db connection as well as auth right iff the bat
+**SETUP THE DB**
+**On Mongo Atlas**
+  Create a new project
+  Create a cluster
+  
+  Do not create any tables yet
+  They get created automatically from the app
+    
+  user name
+    oleivahn
+    8IKYtRvnVzsPLuMq
+    URI STUFF
+  
+  **Connect DB to App**
+  Get the driver connection string on mongodb
+    For Node (The MONGO_URI)
+    This gives you the connection string... paste that on the .env file
+    
+  This should give you db connection as well as auth right iff the bat
 
 -----
-On Initial config..
+**WHEN YOU FIRST RUN THE NEXT APP**
+On Initial config.. on Nextjs
 
+  VsCode
+  **Mod the Navbar and Routes**
 	Change the name of the app (on the config file - not the .env)
-	Mod the routes
+	Mod the routes and Navbar
+
+
+  **Define the data and table for mongo**
+  Customze the form UI first
 	Test the database by sending a form on contact us as is
-		Then mod it to yuor liking
-		
+		Then mod it to yourr liking later
 
-Mod the db schemas (This is the definition of the "tables")
+  Mod the db schemas to match the UI (This is the definition of the "tables")
 
-Go to the form /components/Form/
-	And mofidy the form dafault values
-	and the formSchema (which is the validation table for Zod)
+
+  **Form and Validation**
+  Go to the form /components/Form/
+    Mofidy the form dafault values
+    and the formSchema (which is the validation table for Zod)
 	
-Fix the error wigglis on Form.tsx
-	This is mainly matching the required fields on the form
+  [UI] Fix the error wigglis on Form.tsx
+	  This is mainly matching the required fields on the form
 	
-Change the model (table) references on the formAction too
+  **Connect the Form Action**
+  Import the right model (table) references on the formAction too (This is where the data is sent to the db and tables created)
 
-Test data send to db
+
+  Test data send to db
 
 
-Deploy test to vercel
-		Add ENV variables
+**Deploy App to vercel**
+  Connect the app to vercel
+  Add ENV variables
 		
-Test vercel deployment
+**Test vercel deployment**
 	Grab the live URL and test it 
 	https://ehc-paytracker.vercel.app/
 
-Add the domain portion of it
+**Add the domain portion of it**
 	Get the A record and CName from the domain name provider and add the in the vercel dashboard
 	
+
 
 
 ## Getting Started

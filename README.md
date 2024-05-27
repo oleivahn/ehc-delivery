@@ -1,5 +1,32 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+Clone project
+connect the db
+
+choose the database name
+	and the cluster
+	
+user name
+	oleivahn
+	8IKYtRvnVzsPLuMq
+	
+Get the driver
+	For Node
+	This gives you the connection string... paste that on the .env file
+	
+This should give you db connection as well as auth right iff the bat
+
+-----
+On Initial config..
+
+	Change the name of the app (on the config file - not the .env)
+	Mod the routes
+	Test the database by sending a form on contact us as is
+		Then mod it to yuor liking
+
+
+
 ## Getting Started
 
 First, run the development server:

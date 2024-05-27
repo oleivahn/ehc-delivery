@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+------------------------
 
 Clone project
 connect the db
@@ -24,7 +25,32 @@ On Initial config..
 	Mod the routes
 	Test the database by sending a form on contact us as is
 		Then mod it to yuor liking
+		
 
+Mod the db schemas (This is the definition of the "tables")
+
+Go to the form /components/Form/
+	And mofidy the form dafault values
+	and the formSchema (which is the validation table for Zod)
+	
+Fix the error wigglis on Form.tsx
+	This is mainly matching the required fields on the form
+	
+Change the model (table) references on the formAction too
+
+Test data send to db
+
+
+Deploy test to vercel
+		Add ENV variables
+		
+Test vercel deployment
+	Grab the live URL and test it 
+	https://ehc-paytracker.vercel.app/
+
+Add the domain portion of it
+	Get the A record and CName from the domain name provider and add the in the vercel dashboard
+	
 
 
 ## Getting Started

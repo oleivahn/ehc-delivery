@@ -7,45 +7,11 @@ import { currentUser } from "@clerk/nextjs/server";
 import { siteConfig } from "@/config/site";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-import {
-  Activity,
-  ArrowUpRight,
-  CircleUser,
-  CreditCard,
-  DollarSign,
-  Menu,
-  Package2,
-  Search,
-  Users,
-} from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { Menu, Package2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { ThemeToggle } from "./Theme-toggle";
 
 import { Icons } from "@/components/icons";
@@ -53,7 +19,7 @@ import { Icons } from "@/components/icons";
 type NavItem = {
   href: string;
   label: string;
-  protected: boolean;
+  isProtected: boolean;
 };
 
 export default function Navbar() {
@@ -63,21 +29,45 @@ export default function Navbar() {
   // const user = await currentUser();
 
   const LEFT_NAV_ITEMS: NavItem[] = [
-    { href: "/", label: "Home", protected: false },
-    { href: "/testimonies", label: "Testimonies", protected: false },
+    { href: "/", label: "Home", isProtected: false },
+    { href: "/testimonies", label: "Testimonies", isProtected: false },
   ];
 
   const RIGHT_NAV_ITEMS: NavItem[] = [
-    { href: "/pricing", label: "Pricing", protected: false },
-    { href: "/contactUs", label: "Contact Us", protected: false },
+    { href: "/pricing", label: "Pricing", isProtected: false },
+    { href: "/contactUs", label: "Contact Us", isProtected: false },
   ];
+
+  //  Break the logic into a function to determine if a link is protected or not
+  function generateProtectedLink(
+    href: string,
+    label: string,
+    isProtected: boolean,
+    i: number
+  ) {
+    const isActive = pathname === href;
+
+    console.log("📗 LOG [ isActive ]:", isActive, "📗 LOG [ href ]:", href);
+
+    return (
+      <Link
+        key={i}
+        href={href}
+        className={`${
+          isActive ? "text-primary" : "text-muted-foreground"
+        } transition-colors hover:text-foreground text-nowrap hidden md:block font-semibold`}
+      >
+        {label}
+      </Link>
+    );
+  }
 
   return (
     <div className="flex w-full flex-col border-b">
       <header className="container sticky top-0 flex h-20 items-center gap-4 bg-background px-4 md:px-6">
-        {/* DRAWER */}
-        {/* HOW TO CLOSE THE DRAWER AFTER CLICKING ON A LINK */}
-        {/* https://github.com/saadeghi/daisyui/discussions/2444 */}
+        {/* HOW TO CLOSE THE DRAWER AFTER CLICKING ON A LINK
+        https://github.com/saadeghi/daisyui/discussions/2444 */}
+        {/* //-DRAWER */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -98,8 +88,9 @@ export default function Navbar() {
                 <Package2 className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
+              {/* //-DRAWER MENUS */}
               {[...LEFT_NAV_ITEMS, ...RIGHT_NAV_ITEMS].map(
-                ({ href, label }, i) => {
+                ({ href, label, isProtected }, i) => {
                   const isActive = pathname === href;
 
                   return (
@@ -121,48 +112,25 @@ export default function Navbar() {
             </nav>
           </SheetContent>
         </Sheet>
-        {/* LOGO AND LEFT SIDE MENUS */}
+
         <nav className="ie md:text-md flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 lg:gap-10">
+          {/* //-LOGO*/}
           <Link href="/" className="flex items-center space-x-2">
             <Icons.logo className="h-6 w-6" />
             <span className="inline-block text-nowrap text-xl font-bold md:text-3xl">
               {siteConfig.name}
             </span>
           </Link>
-          {LEFT_NAV_ITEMS.map(({ href, label }, i) => {
-            const isActive = pathname === href;
-
-            return (
-              <Link
-                key={i}
-                href={href}
-                className={`${
-                  isActive ? "text-primary" : "text-muted-foreground"
-                } transition-colors hover:text-foreground text-nowrap hidden md:block font-semibold`}
-              >
-                {label}
-              </Link>
-            );
+          {/* //-LEFT SIDE MENUS */}
+          {LEFT_NAV_ITEMS.map(({ href, label, isProtected }, i) => {
+            return generateProtectedLink(href, label, isProtected, i);
           })}
         </nav>
 
-        {/* RIGHT SIDE MENUS */}
-        <div className="ml-auto flex items-center gap-4 text-lg md:gap-2 lg:gap-10">
-          {RIGHT_NAV_ITEMS.map(({ href, label }, i) => {
-            // console.log("📗 LOG [ href ]:", href, label, i);
-            const isActive = pathname === href;
-
-            return (
-              <Link
-                key={i}
-                href={href}
-                className={`${
-                  isActive ? "text-primary" : "text-muted-foreground"
-                } transition-colors hover:text-foreground text-nowrap hidden md:block font-semibold`}
-              >
-                {label}
-              </Link>
-            );
+        {/* //-RIGHT SIDE MENUS */}
+        <nav className="ml-auto flex items-center gap-4 text-lg md:gap-2 lg:gap-10">
+          {RIGHT_NAV_ITEMS.map(({ href, label, isProtected }, i) => {
+            return generateProtectedLink(href, label, isProtected, i);
           })}
           <ThemeToggle />
           <SignedOut>
@@ -187,7 +155,7 @@ export default function Navbar() {
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu> */}
-        </div>
+        </nav>
         {/* </div> */}
       </header>
     </div>

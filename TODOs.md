@@ -2,8 +2,9 @@
 
 <!-- TODO: -->
 
-- [] **Next** Send email - Resend
-- [] **Next** Hide entire tab if not logged in
+- [ ] Protect the routes with Clerk
+- [ ] **Next** Send email - Resend
+- [ ] **Next** Hide entire tab if not logged in
 
 - [ ] Make it a regular route, I need to learn how to actually make the form work with the api, not actions
 - [ ] Change to testimonials
@@ -60,6 +61,11 @@
 
 - [x] Setup Server Actions correctly
   - [YouTube Video](https://www.youtube.com/watch?v=RadgkoJrhu0&ab_channel=ByteGrad)
+
+### **5/15/24**
+
+- [x] HOW TO CLOSE THE DRAWER AFTER CLICKING ON A LINK
+      [Solution link](https://github.com/saadeghi/daisyui/discussions/2444)
 
 ### **5/12/24**
 

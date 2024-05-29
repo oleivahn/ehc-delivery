@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { dark } from "@clerk/themes";
 
@@ -32,10 +33,11 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  console.log(
-    "Theme",
-    process.env.DEFAULT_THEME ? process.env.DEFAULT_THEME : "light"
-  );
+  const { userId, orgId, sessionClaims } = auth();
+  // This is the server
+  console.log("📗 LOG [ user ]:", userId);
+  console.log("📗 LOG [ orgId ]:", orgId);
+  console.log("📗 LOG [ sessionClaims ]:", sessionClaims);
 
   const theme = process.env.DEFAULT_THEME === "dark" ? dark : undefined;
 
@@ -45,6 +47,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         baseTheme: theme,
       }}
     >
+      {/* <SyncActiveOrganization/> */}
+
       <html lang="en">
         <body
           className={cn(

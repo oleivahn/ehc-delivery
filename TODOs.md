@@ -16,6 +16,8 @@
 
 ## Pending Changes
 
+- [ ] Keep error messages on the form and valid form fields still populated
+- [ ] Better error handling on the form
 - [ ] Role based authorization and secure routes
 - [ ] Replace the favicon with a transparent backgroud one
   - [Favicon Generator Website](https://favicon.io/favicon-converter/)
@@ -24,6 +26,8 @@
   - Look for Shadcn design pack
 - [ ] Document current deployment process - How to configure the domain, next, vercel and env variables
 - [ ] Gradient letters on the title "Delivery" (New trend)
+- [ ] Fix the calendar UX (add months and years dropdowns)
+      [Calendar UX with ShadCN](https://github.com/shadcn-ui/ui/discussions/1553)
 
 &nbsp;  
 &nbsp;  

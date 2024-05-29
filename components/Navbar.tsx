@@ -2,15 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { currentUser } from '@clerk/nextjs/server';
+import { currentUser } from "@clerk/nextjs/server";
 
 import { siteConfig } from "@/config/site";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import {
   Activity,
@@ -55,20 +50,26 @@ import { ThemeToggle } from "./Theme-toggle";
 
 import { Icons } from "@/components/icons";
 
+type NavItem = {
+  href: string;
+  label: string;
+  protected: boolean;
+};
+
 export default function Navbar() {
   // - How to set colors for active links
   // https://stackoverflow.com/questions/68978743/tailwindcss-active-link-text-color-not-changing
   const pathname = usePathname();
   // const user = await currentUser();
 
-  const LEFT_NAV_ITEMS = [
-    { href: "/", label: "Home" },
-    { href: "/testimonies", label: "Testimonies" },
+  const LEFT_NAV_ITEMS: NavItem[] = [
+    { href: "/", label: "Home", protected: false },
+    { href: "/testimonies", label: "Testimonies", protected: false },
   ];
 
-  const RIGHT_NAV_ITEMS = [
-    { href: "/pricing", label: "Pricing" },
-    { href: "/contactUs", label: "Contact Us" },
+  const RIGHT_NAV_ITEMS: NavItem[] = [
+    { href: "/pricing", label: "Pricing", protected: false },
+    { href: "/contactUs", label: "Contact Us", protected: false },
   ];
 
   return (
@@ -102,7 +103,6 @@ export default function Navbar() {
                   const isActive = pathname === href;
 
                   return (
-
                     <Link
                       key={i}
                       href={href}
@@ -166,11 +166,11 @@ export default function Navbar() {
           })}
           <ThemeToggle />
           <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">

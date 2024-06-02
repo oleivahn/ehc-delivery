@@ -29,6 +29,7 @@
 - [ ] Gradient letters on the title "Delivery" (New trend)
 - [ ] Fix the calendar UX (add months and years dropdowns)
       [Calendar UX with ShadCN](https://github.com/shadcn-ui/ui/discussions/1553)
+- [ ] Add beter contrast of color for dark mode
 
 &nbsp;  
 &nbsp;  
